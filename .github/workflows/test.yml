@@ -60,9 +60,9 @@ jobs:
         uses: cakevm/huff-neo-toolchain@v1
         with:
           version: latest
-#      - name: Huff Tests
-#        uses: huff-language/huff-tests-action@v3
-#        with:
-#          with-location: "src"
-#          with-extension: "*.huff"
-#          with-format: "table"
+      - name: Huff Tests
+        uses: cakevm/huff-neo-tests-action@v1
+        with:
+          with-location: "src"
+          with-extension: "*.huff"
+          with-format: "table"
