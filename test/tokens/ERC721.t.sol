@@ -2,7 +2,7 @@
 pragma solidity ^0.8.15;
 
 import "forge-std/Test.sol";
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 
 import { ERC721TokenReceiver } from "solmate/tokens/ERC721.sol";
 
@@ -88,8 +88,9 @@ contract ERC721Test is Test {
 
     function setUp() public {
         // Deploy the ERC721
-        string memory wrapper_code = vm.readFile("test/tokens/mocks/ERC721Wrappers.huff");
-        token = SafeMintableERC721(HuffDeployer.config().with_code(wrapper_code).with_args(bytes.concat(abi.encode("Token"), abi.encode("TKN"))).deploy("tokens/ERC721"));
+        token = SafeMintableERC721(HuffNeoDeployer.config()
+        .with_args(bytes.concat(abi.encode("Token"), abi.encode("TKN")))
+        .deploy("test/tokens/mocks/ERC721Wrappers.huff"));
     }
 
     /// @notice Test the ERC721 Metadata

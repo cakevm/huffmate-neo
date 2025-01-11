@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.15;
 
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 import "forge-std/Test.sol";
 import "forge-std/console.sol";
 
@@ -162,10 +162,11 @@ contract ERC1155Test is Test, ERC1155Recipient, FuzzingUtils {
 
     /// @dev Setup the testing environment.
     function setUp() public {
-        string memory wrappers = vm.readFile("test/tokens/mocks/ERC1155Wrappers.huff");
-        HuffDeployer.config().with_args(bytes.concat(abi.encode("Token"), abi.encode("TKN")));
-        token = ERC1155(HuffDeployer.deploy_with_code("tokens/ERC1155", wrappers));
+        token = ERC1155(HuffNeoDeployer.config()
+        .with_args(bytes.concat(abi.encode("Token"), abi.encode("TKN")))
+        .deploy("test/tokens/mocks/ERC1155Wrappers.huff"));
     }
+
 
     function invariantMetadata() public {
         assertEq(keccak256(abi.encode(token.name())), keccak256(abi.encode("Token")));

@@ -2,7 +2,7 @@
 pragma solidity ^0.8.15;
 
 import "forge-std/Test.sol";
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 
 interface IECDSA {
     function recoverCd(bytes32 hash, bytes calldata signature) external view returns (address);
@@ -27,8 +27,7 @@ contract ECDSATest is Test {
 
     function setUp() public {
         /// @notice deploy a new instance of ECDSA
-        string memory wrapper_code = vm.readFile("test/utils/mocks/ECDSAWrappers.huff");
-        ecdsa = IECDSA(HuffDeployer.deploy_with_code("utils/ECDSA", wrapper_code));
+        ecdsa = IECDSA(HuffNeoDeployer.deploy("test/utils/mocks/ECDSAWrappers.huff"));
     }
 
     function testRecoverWithInvalidShortSignatureReturnsZero() public {

@@ -1,3 +1,5 @@
+#include "../../../src/utils/Shuffling.huff"
+
 #define function oneWayShuffle(bytes32 seed, uint256 index, uint256 count, uint256 rounds) view returns (uint256)
 
 #define macro SHUFFLE_WRAPPER() = takes (0) returns (0) {

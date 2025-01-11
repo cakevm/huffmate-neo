@@ -1,3 +1,5 @@
+#include "../../../src/utils/JumpTableUtil.huff"
+
 #define function getJumpdestMem(uint256) view returns (uint256)
 #define function getJumpdestStack(uint256) view returns (uint256)
 #define function getJumpdestMemPacked(uint256) view returns (uint256)

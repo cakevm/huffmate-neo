@@ -2,22 +2,15 @@
 pragma solidity ^0.8.15;
 
 import "forge-std/Test.sol";
-import {HuffDeployer} from "foundry-huff/HuffDeployer.sol";
-import {HuffConfig} from "foundry-huff/HuffConfig.sol";
+import {HuffNeoDeployer} from "foundry-huff-neo/HuffNeoDeployer.sol";
+import {HuffNeoConfig} from "foundry-huff-neo/HuffNeoConfig.sol";
 
 contract NonPayableTest is Test {
   address np;
 
   function setUp() public {
-    HuffConfig config = HuffDeployer.config().with_code(string.concat(
-      "#define macro MAIN() = takes(0) returns(0) {\n",
-      "  NON_PAYABLE()\n",
-      "  0x00 0x00 log0 // anonymous log\n",
-      "  0x01 0x00 mstore\n",
-      "  0x20 0x00 return\n",
-      "}\n"
-    ));
-    np = config.deploy("auth/NonPayable");
+    HuffNeoConfig config = HuffNeoDeployer.config();
+    np = config.deploy("test/auth/mocks/NonPayableWrappers.huff");
   }
 
   /// @notice Test that a non-matching signature reverts

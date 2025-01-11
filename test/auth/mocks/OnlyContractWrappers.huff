@@ -1,0 +1,8 @@
+#include "../../../src/auth/OnlyContract.huff"
+
+#define macro MAIN() = takes(0) returns(0) {
+    ONLY_CONTRACT()
+    0x00 0x00 log0 // anonymous log
+    0x01 0x00 mstore
+    0x20 0x00 return
+}

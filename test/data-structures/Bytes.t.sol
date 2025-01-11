@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.15;
 
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 import "forge-std/Test.sol";
 import "forge-std/console2.sol";
 
@@ -21,13 +21,9 @@ contract BytesTest is Test {
     IBytes b;
     
     function setUp() public {
-        string memory instantiable_code = vm.readFile(
-            "test/data-structures/mocks/BytesWrappers.huff"
-        );
-
         // Create an Instantiable Arrays
-        HuffConfig config = HuffDeployer.config().with_code(instantiable_code);
-        b = IBytes(config.deploy("data-structures/Bytes"));
+        HuffNeoConfig config = HuffNeoDeployer.config();
+        b = IBytes(config.deploy("test/data-structures/mocks/BytesWrappers.huff"));
     }
     
     function testConcat1() public {

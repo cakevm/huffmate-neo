@@ -2,8 +2,8 @@
 pragma solidity ^0.8.15;
 
 import "forge-std/Test.sol";
-import {HuffConfig} from "foundry-huff/HuffConfig.sol";
-import {HuffDeployer} from "foundry-huff/HuffDeployer.sol";
+import {HuffNeoConfig} from "foundry-huff-neo/HuffNeoConfig.sol";
+import {HuffNeoDeployer} from "foundry-huff-neo/HuffNeoDeployer.sol";
 import {NonMatchingSelectorsHelper} from "../test-utils/NonMatchingSelectorHelper.sol";
 
 
@@ -20,11 +20,10 @@ contract OwnedTest is Test, NonMatchingSelectorsHelper {
 
   function setUp() public {
     // Create Owner
-    string memory wrapper_code = vm.readFile("test/auth/mocks/OwnedWrappers.huff");
-    HuffConfig config = HuffDeployer.config().with_code(wrapper_code).with_args(abi.encode(OWNER));
+    HuffNeoConfig config = HuffNeoDeployer.config().with_args(abi.encode(OWNER));
     vm.expectEmit(true, true, true, true);
     emit OwnerUpdated(address(config), OWNER);
-    owner = Owned(config.deploy("auth/Owned"));
+    owner = Owned(config.deploy("test/auth/mocks/OwnedWrappers.huff"));
   }
 
   /// @notice Test that a non-matching selector reverts

@@ -1,3 +1,4 @@
+#include "../../../src/utils/Calls.huff"
 
 #define function callFunc() payable returns ()
 #define function staticcallFunc() payable returns ()

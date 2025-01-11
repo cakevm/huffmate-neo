@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.15;
 
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 import "forge-std/Test.sol";
 
 interface ITrigonometry {
@@ -19,8 +19,7 @@ contract TrigonometryTest is Test {
     function setUp() public {
         /// @notice deploy a new instance of ITrigonometry by
         /// passing in the address of the deployed Huff contract
-        string memory wrapper_code = vm.readFile("test/math/mocks/TrigonometryWrappers.huff");
-        trig = ITrigonometry(HuffDeployer.deploy_with_code("math/Trigonometry", wrapper_code));
+        trig = ITrigonometry(HuffNeoDeployer.deploy("test/math/mocks/TrigonometryWrappers.huff"));
     }
 
     ////////////////////////////////////////////////////////////////

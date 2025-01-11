@@ -13,7 +13,7 @@ import {
 import {DSTestPlus} from "solmate/test/utils/DSTestPlus.sol";
 
 
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 
 uint256 constant ONE_THOUSAND_YEARS = 356 days * 1000;
 uint256 constant MAX_SELLABLE = 6392;
@@ -48,14 +48,12 @@ contract LinearVRGDATest is Test {
         require(decayConstant < 0, "NON_NEGATIVE_DECAY_CONSTANT");
 
         // Overwrite inlined constants using the huff compiler - essentially equivalent to an immutable
-        string memory vrgda_wrapper = vm.readFile("test/mechanisms/huff-vrgda/mocks/LinearVRGDAWrappers.huff");
-        vrgda = MockLinearVRGDA(HuffDeployer
+        vrgda = MockLinearVRGDA(HuffNeoDeployer
             .config()
-            .with_code(vrgda_wrapper)
             .with_bytes32_constant("TARGET_PRICE", bytes32(abi.encodePacked(targetPrice)))
             .with_bytes32_constant("DECAY_CONSTANT", bytes32(abi.encodePacked(decayConstant)))
             .with_bytes32_constant("PER_TIME_UNIT", bytes32(abi.encodePacked(perTimeUnit)))
-            .deploy("mechanisms/huff-vrgda/LinearVRGDA")
+            .deploy("test/mechanisms/huff-vrgda/mocks/LinearVRGDAWrappers.huff")
         );
     }
 

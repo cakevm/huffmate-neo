@@ -6,7 +6,7 @@ import {DSTestPlus} from "solmate/test/utils/DSTestPlus.sol";
 
 import {toWadUnsafe, toDaysWadUnsafe, fromDaysWadUnsafe, wadLn} from "./utils/SignedWadMath.sol";
 
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 import "forge-std/Test.sol";
 
 
@@ -53,16 +53,14 @@ contract LogisticVRGDATest is Test {
         require(decayConstant < 0, "NON_NEGATIVE_DECAY_CONSTANT");
 
         // Overwrite inlined constants using the huff compiler - essentially equivalent to an immutable
-        string memory vrgda_wrapper = vm.readFile("test/mechanisms/huff-vrgda/mocks/LogisticVRGDAWrappers.huff");
-        vrgda = MockLogisticVRGDA(HuffDeployer
+        vrgda = MockLogisticVRGDA(HuffNeoDeployer
             .config()
-            .with_code(vrgda_wrapper)
             .with_bytes32_constant("TARGET_PRICE", bytes32(abi.encodePacked(targetPrice)))
             .with_bytes32_constant("DECAY_CONSTANT", bytes32(abi.encodePacked(decayConstant)))
             .with_bytes32_constant("LOGISTIC_LIMIT", bytes32(abi.encodePacked(logisticLimit)))
             .with_bytes32_constant("LOGISTIC_LIMIT_DOUBLED", bytes32(abi.encodePacked(logisticLimitDoubled)))
             .with_bytes32_constant("TIME_SCALE", bytes32(abi.encodePacked(timeScale)))
-            .deploy("mechanisms/huff-vrgda/LogisticVRGDA")
+            .deploy("test/mechanisms/huff-vrgda/mocks/LogisticVRGDAWrappers.huff")
         );
     }
 

@@ -1,3 +1,5 @@
+#include "../../../src/utils/Pausable.huff"
+
 #define function isPaused() view returns (bool)
 #define function pause() nonpayable returns ()
 #define function unpause() nonpayable returns ()

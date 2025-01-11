@@ -1,3 +1,5 @@
+#include "../../../src/utils/Multicallable.huff"
+
 #define function multicall(bytes[] calldata) payable returns (bytes[] memory)
 #define function call1() view returns (uint256)
 #define function call2() view returns (uint256)

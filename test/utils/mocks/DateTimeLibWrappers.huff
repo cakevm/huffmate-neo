@@ -1,3 +1,5 @@
+#include "../../../src/utils/DateTimeLib.huff"
+
 /* Functions */
 #define function weekday(uint256) nonpayable returns (uint256)
 #define function isLeapYear(uint256) nonpayable returns (bool)

@@ -1,3 +1,5 @@
+#include "../../../src/utils/SafeTransferLib.huff"
+
 #define function safeTransferETH(address, uint256) payable returns ()
 #define function safeTransferFrom(address, address, address, uint256) nonpayable returns () 
 #define function safeTransfer(address, address, uint256) nonpayable returns ()

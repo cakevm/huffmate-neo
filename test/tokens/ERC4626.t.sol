@@ -2,7 +2,7 @@
 pragma solidity ^0.8.15;
 
 import "forge-std/Test.sol";
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 
 import { MockERC20 } from "solmate/test/utils/mocks/MockERC20.sol";
 
@@ -67,13 +67,11 @@ contract ERC4626Test is Test {
         underlying = new TestToken(); // 10_000 ** 18
 
         // Deploy the ERC4626
-        string memory wrapper_code = vm.readFile("test/tokens/mocks/ERC4626Wrappers.huff");
         vault = MockERC4626(
-            HuffDeployer
+            HuffNeoDeployer
                 .config()
-                .with_code(wrapper_code)
                 .with_args(bytes.concat(abi.encode(address(underlying)), abi.encode("Token"), abi.encode("TKN")))
-                .deploy("tokens/ERC4626")
+                .deploy("test/tokens/mocks/ERC4626Wrappers.huff")
         );
     }
 

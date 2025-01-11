@@ -1,3 +1,4 @@
+#include "../../../src/utils/SSTORE2.huff"
 
 // #define function read(address, uint256) view returns (bytes memory)
 // #define function read(address, uint256, uint256) view returns (bytes memory)

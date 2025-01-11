@@ -1,3 +1,5 @@
+#include "../../../src/math/Trigonometry.huff"
+
 #define function sin(uint256) pure returns (int256)
 #define function cos(uint256) pure returns (int256)
 

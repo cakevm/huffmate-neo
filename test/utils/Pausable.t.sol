@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.15;
 
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 import "forge-std/Test.sol";
 
 
@@ -17,8 +17,7 @@ contract PausableTest is Test {
     IPausable pausable;
 
     function setUp() public {
-        string memory wrapper_code = vm.readFile("test/utils/mocks/PausableWrappers.huff");
-        pausable = IPausable(HuffDeployer.deploy_with_code("utils/Pausable", wrapper_code));
+        pausable = IPausable(HuffNeoDeployer.deploy("test/utils/mocks/PausableWrappers.huff"));
     }
 
     function testIsPausedByDefault() public {

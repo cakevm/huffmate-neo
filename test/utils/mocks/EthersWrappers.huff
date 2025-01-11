@@ -1,4 +1,3 @@
-
 // Receives ether
 #define function isPayable() payable returns (uint256)
 #define function nonPayable() nonpayable returns (uint256)

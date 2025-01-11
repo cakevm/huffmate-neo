@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.15;
 
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 import "forge-std/Test.sol";
 
 interface IMulticallable {
@@ -15,8 +15,7 @@ contract MulticallableTest is Test {
     function setUp() public {
         /// @notice deploy a new instance of IMulticallable by
         /// passing in the address of the deployed Huff contract
-        string memory wrapper_code = vm.readFile("test/utils/mocks/MulticallableWrappers.huff");
-        multicallable = IMulticallable(HuffDeployer.deploy_with_code("utils/Multicallable", wrapper_code));
+        multicallable = IMulticallable(HuffNeoDeployer.deploy("test/utils/mocks/MulticallableWrappers.huff"));
     }
 
     function testRevertNoMsg() public {

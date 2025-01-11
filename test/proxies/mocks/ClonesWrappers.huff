@@ -1,3 +1,5 @@
+#include "../../../src/proxies/Clones.huff"
+
 #define function clone(address) nonpayable returns (address)
 #define function cloneDeterministic(address,bytes32) nonpayable returns (address)
 #define function predictDeterministicAddress(address,bytes32) view returns (address)

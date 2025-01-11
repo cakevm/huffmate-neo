@@ -1,3 +1,5 @@
+#include "../../../src/tokens/ERC1155.huff"
+
 #define macro CONSTRUCTOR() = takes (0) returns (0) {
     ERC1155_CONSTRUCTOR()
 }

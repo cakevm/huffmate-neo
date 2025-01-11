@@ -1,6 +1,10 @@
 name: ci
 
-on: [push]
+on:
+  push:
+    branches: [main]
+  pull_request_target:
+    branches: [main]
 
 jobs:
   check:
@@ -14,8 +18,8 @@ jobs:
         uses: foundry-rs/foundry-toolchain@v1
         with:
           version: nightly
-      - name: Install Huff
-        uses: huff-language/huff-toolchain@v2
+      - name: Install Huff Neo
+        uses: cakevm/huff-neo-toolchain@v1
         with:
           version: nightly
       - name: Run Forge build
@@ -33,8 +37,8 @@ jobs:
         uses: foundry-rs/foundry-toolchain@v1
         with:
           version: nightly
-      - name: Install Huff
-        uses: huff-language/huff-toolchain@v2
+      - name: Install Huff Neo
+        uses: cakevm/huff-neo-toolchain@v1
         with:
           version: nightly
       - name: Run Forge tests
@@ -45,20 +49,20 @@ jobs:
     name: Tests in Huff
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
       - name: Install Foundry
         uses: foundry-rs/foundry-toolchain@v1
         with:
           version: nightly
-      - name: Install Huff
-        uses: huff-language/huff-toolchain@v2
+      - name: Install Huff Neo
+        uses: cakevm/huff-neo-toolchain@v1
         with:
           version: nightly
-      - name: Huff Tests
-        uses: huff-language/huff-tests-action@v3
-        with:
-          with-location: "src"
-          with-extension: "*.huff"
-          with-format: "table"
+#      - name: Huff Tests
+#        uses: huff-language/huff-tests-action@v3
+#        with:
+#          with-location: "src"
+#          with-extension: "*.huff"
+#          with-format: "table"

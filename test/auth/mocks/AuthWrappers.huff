@@ -1,3 +1,4 @@
+#include "../../../src/auth/Auth.huff"
 
 #define macro CONSTRUCTOR() = takes (0) returns (0) {
     AUTH_CONSTRUCTOR()

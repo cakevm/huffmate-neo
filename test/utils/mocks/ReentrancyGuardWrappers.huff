@@ -1,3 +1,4 @@
+#include "../../../src/utils/ReentrancyGuard.huff"
 
 #define function state() view returns (uint256)
 #define function lock() nonpayable returns ()

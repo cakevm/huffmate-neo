@@ -227,9 +227,6 @@
     __Is_Contract_JUMP jumpi                    // [address]
         NON_CONTRACT(0x00)
 
-    // Set the beacon slot
-    __Is_Contract_JUMP:
-
     // Staticcall the implementation on address
     __FUNC_SIG(implementation) 0x00 mstore      // [address]
     0x20                                        // [retSize, address]

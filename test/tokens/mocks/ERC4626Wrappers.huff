@@ -1,3 +1,4 @@
+#include "../../../src/tokens/ERC4626.huff"
 
 #define function beforeWithdrawHookCalledCounter() nonpayable returns (uint256)
 #define function afterDepositHookCalledCounter() nonpayable returns (uint256)

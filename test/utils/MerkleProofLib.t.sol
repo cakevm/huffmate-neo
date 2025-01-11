@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.15;
 
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 import "forge-std/Test.sol";
 
 interface IMerkleProofLib {
@@ -14,8 +14,7 @@ contract MerkleProofLibTest is Test {
     function setUp() public {
         /// @notice deploy a new instance of IMerkleProofLib by
         /// passing in the address of the deployed Huff contract
-        string memory wrapper_code = vm.readFile("test/utils/mocks/MerkleProofLibWrappers.huff");
-        merkleLib = IMerkleProofLib(HuffDeployer.deploy_with_code("utils/MerkleProofLib", wrapper_code));
+        merkleLib = IMerkleProofLib(HuffNeoDeployer.deploy("test/utils/mocks/MerkleProofLibWrappers.huff"));
     }
 
     function testVerifyEmptyMerkleProofSuppliedLeafAndRootSame() public {

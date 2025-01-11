@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.15;
 
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 import "forge-std/console.sol";
 import "forge-std/Test.sol";
 
@@ -60,11 +60,8 @@ contract DateTimeLibTest is Test {
 
     /// @dev Setup the testing environment.
     function setUp() public {
-        string memory wrapper_code = vm.readFile(
-            "test/utils/mocks/DateTimeLibWrappers.huff"
-        );
         sut = IDateTimeLib(
-            HuffDeployer.deploy_with_code("utils/DateTimeLib", wrapper_code)
+            HuffNeoDeployer.deploy("test/utils/mocks/DateTimeLibWrappers.huff")
         );
     }
 

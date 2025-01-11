@@ -6,7 +6,7 @@
 #include "../utils/Errors.huff"
 
 // "NON_PAYABLE" Revert Message String
-#define constant NON_PAYABLE_ERROR = 0xb4e4f4e5f50415941424c45000000000000000000000000000000000000000000
+#define constant NON_PAYABLE_ERROR = 0xb4e4f4e5f50415941424c450000000000000000000000000000000000000000
 #define constant NON_PAYABLE_LENGTH = 0x0b
 
 /// @notice Reverts if the call has a non-zero value

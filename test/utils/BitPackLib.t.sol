@@ -2,7 +2,7 @@
 pragma solidity ^0.8.15;
 
 import "forge-std/Test.sol";
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 
 interface IBitPackLib {
     function packValue(bytes32, uint256, uint256, uint256) external pure returns (bytes32);
@@ -17,8 +17,7 @@ contract BitPackLibTest is Test {
     function setUp() public {
         /// @notice deploy a new instance of IBitPackLib by
         /// passing in the address of the deployed Huff contract
-        string memory wrapper_code = vm.readFile("test/utils/mocks/BitPackLibWrappers.huff");
-        bitPackLib = IBitPackLib(HuffDeployer.deploy_with_code("utils/BitPackLib", wrapper_code));
+        bitPackLib = IBitPackLib(HuffNeoDeployer.deploy("test/utils/mocks/BitPackLibWrappers.huff"));
     }
 
     function testPackValue() public {

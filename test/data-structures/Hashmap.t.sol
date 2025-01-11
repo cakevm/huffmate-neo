@@ -2,8 +2,8 @@
 pragma solidity ^0.8.15;
 
 import "forge-std/Test.sol";
-import {HuffConfig} from "foundry-huff/HuffConfig.sol";
-import {HuffDeployer} from "foundry-huff/HuffDeployer.sol";
+import {HuffNeoConfig} from "foundry-huff-neo/HuffNeoConfig.sol";
+import {HuffNeoDeployer} from "foundry-huff-neo/HuffNeoDeployer.sol";
 
 interface Hashmap {
   function loadElement(bytes32) external view returns (bytes32);
@@ -31,12 +31,9 @@ contract HashmapTest is Test {
   Hashmap hmap;
 
   function setUp() public {
-    // Read instantiable hashmap from file
-    string memory instantiable_code = vm.readFile("test/data-structures/mocks/HashmapWrappers.huff");
-
     // Create an Instantiable Hashmap
-    HuffConfig config = HuffDeployer.config().with_code(instantiable_code);
-    hmap = Hashmap(config.deploy("data-structures/Hashmap"));
+    HuffNeoConfig config = HuffNeoDeployer.config();
+    hmap = Hashmap(config.deploy("test/data-structures/mocks/HashmapWrappers.huff"));
   }
 
   /// @notice Test getting a value for a key

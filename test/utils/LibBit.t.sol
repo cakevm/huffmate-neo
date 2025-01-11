@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.15;
 
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 import "forge-std/Test.sol";
 
 interface ILibBit {
@@ -17,8 +17,7 @@ contract LibBitTest is Test {
     function setUp() public {
         /// @notice deploy a new instance of IJumpTableUtil by
         /// passing in the address of the deployed Huff contract
-        string memory wrapper_code = vm.readFile("test/utils/mocks/LibBitWrappers.huff");
-        lib = ILibBit(HuffDeployer.deploy_with_code("utils/LibBit", wrapper_code));
+        lib = ILibBit(HuffNeoDeployer.deploy("test/utils/mocks/LibBitWrappers.huff"));
     }
 
     function testFuzzFLS() public {

@@ -1,3 +1,5 @@
+#include "../../../src/utils/BitPackLib.huff"
+
 #define function packValue(bytes32, uint256, uint256, uint256) pure returns (bytes32)
 #define function unpackValueFromRight(bytes32, uint256) pure returns (uint256)
 #define function unpackValueFromLeft(bytes32, uint256) pure returns (uint256)

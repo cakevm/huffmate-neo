@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.15;
 
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 import "forge-std/Test.sol";
 
 // Mock Interface
@@ -15,8 +15,7 @@ contract ReentranctGuardTest is Test {
     IGuard guard;
 
     function setUp() public {
-        string memory wrapper_code = vm.readFile("test/utils/mocks/ReentrancyGuardWrappers.huff");
-        guard = IGuard(HuffDeployer.deploy_with_code("utils/ReentrancyGuard", wrapper_code));
+        guard = IGuard(HuffNeoDeployer.deploy("test/utils/mocks/ReentrancyGuardWrappers.huff"));
     }
 
     /// @notice Test locking

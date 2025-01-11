@@ -2,7 +2,7 @@
 pragma solidity ^0.8.15;
 
 import "forge-std/Test.sol";
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 
 interface Math {
     function sqrt(uint256) external pure returns (uint256);
@@ -16,8 +16,7 @@ contract MathTest is Test {
     Math math;
 
     function setUp() public {
-        string memory wrappers = vm.readFile("test/math/mocks/MathWrappers.huff");
-        math = Math(HuffDeployer.deploy_with_code("math/Math", wrappers));
+        math = Math(HuffNeoDeployer.deploy("test/math/mocks/MathWrappers.huff"));
     }
 
     // Source: https://github.com/OpenZeppelin/openzeppelin-contracts/blob/e7397844f8dd9b54fb4227b91b20f3bd2e82dab2/contracts/utils/math/Math.sol#L158

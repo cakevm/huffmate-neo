@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.15;
 
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 import "forge-std/Test.sol";
 
 contract InsertionSortTest is Test {
@@ -10,11 +10,8 @@ contract InsertionSortTest is Test {
 
     /// @dev Setup the testing environment.
     function setUp() public {
-        string memory wrapper_code = vm.readFile(
-            "test/utils/mocks/InsertionSortWrappers.huff"
-        );
         insertionSortContract = InsertionSort(
-            HuffDeployer.deploy_with_code("utils/InsertionSort", wrapper_code)
+            HuffNeoDeployer.deploy("test/utils/mocks/InsertionSortWrappers.huff")
         );
     }
 

@@ -2,7 +2,7 @@
 pragma solidity ^0.8.15;
 
 import "forge-std/Test.sol";
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 
 
 interface IConstantsWrappers {
@@ -124,8 +124,7 @@ contract ConstantsTest is Test {
     IConstantsWrappers constants;
 
     function setUp() public {
-        string memory wrapper_code = vm.readFile("test/utils/mocks/ConstantsWrappers.huff");
-        constants = IConstantsWrappers(HuffDeployer.deploy_with_code("utils/Constants", wrapper_code));
+        constants = IConstantsWrappers(HuffNeoDeployer.deploy("test/utils/mocks/ConstantsWrappers.huff"));
     }
 
     function testConstants() external {

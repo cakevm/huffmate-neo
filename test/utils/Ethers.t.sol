@@ -2,7 +2,7 @@
 pragma solidity ^0.8.15;
 
 import "forge-std/Test.sol";
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 
 interface EthersWrappers {
     function isPayable() external payable returns (uint256);
@@ -14,12 +14,10 @@ contract EthersTest is Test {
 
     function setUp() public {
         // Deploy Ethers Lib
-        string memory wrapper_code = vm.readFile("test/utils/mocks/EthersWrappers.huff");
         ethers = EthersWrappers(
-            HuffDeployer
+            HuffNeoDeployer
                 .config()
-                .with_code(wrapper_code)
-                .deploy("utils/Ethers")
+                .deploy("test/utils/mocks/EthersWrappers.huff")
         );
     }
 

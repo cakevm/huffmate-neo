@@ -2,7 +2,7 @@
 pragma solidity 0.8.15;
 
 
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 import "forge-std/Test.sol";
 
 import { MockERC1155 } from "solmate/test/utils/mocks/MockERC1155.sol";
@@ -22,8 +22,7 @@ contract ClonesTest is Test {
     MockERC1155 implementation;
 
     function setUp() public {
-        string memory wrapper_code = vm.readFile("test/proxies/mocks/ClonesWrappers.huff");
-        clones = Clones(HuffDeployer.deploy_with_code("proxies/Clones", wrapper_code));
+        clones = Clones(HuffNeoDeployer.deploy("test/proxies/mocks/ClonesWrappers.huff"));
 
         // Deploy a mock contract to use as the implementation
         implementation = new MockERC1155();

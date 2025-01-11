@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.15;
 
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 import "forge-std/Test.sol";
 
 import { MockERC1155 } from "solmate/test/utils/mocks/MockERC1155.sol";
@@ -58,12 +58,10 @@ contract ProxiesTest is Test, ERC1155Recipient {
             )
         );
 
-        string memory wrapper_code = vm.readFile("test/proxies/mocks/ProxyWrappers.huff");
-        proxy = Proxy(HuffDeployer
+        proxy = Proxy(HuffNeoDeployer
             .config()
             .with_args(args)
-            .with_code(wrapper_code)
-            .deploy("proxies/ERC1967Proxy")
+            .deploy("test/proxies/mocks/ProxyWrappers.huff")
         );
     }
 

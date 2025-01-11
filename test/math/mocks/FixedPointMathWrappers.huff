@@ -1,3 +1,5 @@
+#include "../../../src/math/FixedPointMath.huff"
+
 #define function mulDivDown(uint256,uint256,uint256) pure returns(uint256)
 #define function mulDivUp(uint256,uint256,uint256) pure returns(uint256)
 #define function mulWadDown(uint256,uint256) pure returns(uint256)

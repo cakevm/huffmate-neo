@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.15;
 
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 import "forge-std/Test.sol";
 
 interface IRefundedMock {
@@ -13,8 +13,7 @@ contract RefundedTest is Test {
     IRefundedMock refunded;
 
     function setUp() public {
-        string memory wrapper_code = vm.readFile("test/utils/mocks/RefundedWrappers.huff");
-        refunded = IRefundedMock(HuffDeployer.deploy_with_code("utils/Refunded", wrapper_code));
+        refunded = IRefundedMock(HuffNeoDeployer.deploy("test/utils/mocks/RefundedWrappers.huff"));
     }
 
     function testRefundedCall() public {

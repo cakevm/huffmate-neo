@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.15;
 
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 import "forge-std/Test.sol";
 import "forge-std/console2.sol";
 
@@ -40,13 +40,11 @@ contract MerkleDistributorTest is Test {
         token = new TestToken(10_000 * 10**18);
 
         // Deploy MerkleDistributor
-        string memory wrapper_code = vm.readFile("test/utils/mocks/MerkleDistributorWrappers.huff");
         merkleDistributor = MerkleDistributor(
-            HuffDeployer
+            HuffNeoDeployer
                 .config()
-                .with_code(wrapper_code)
                 .with_args(bytes.concat(abi.encode(address(token)), abi.encode(merkleRoot)))
-                .deploy("utils/MerkleDistributor")
+                .deploy("test/utils/mocks/MerkleDistributorWrappers.huff")
         );
 
         // Transfer to merkledistributor

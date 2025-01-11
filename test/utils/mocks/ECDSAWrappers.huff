@@ -1,3 +1,5 @@
+#include "../../../src/utils/ECDSA.huff"
+
 #define function recoverCd(bytes32, bytes calldata) view returns (address)
 #define function recoverShortSig(bytes32, bytes32, bytes32) view returns (address)
 #define function recoverVRSSig(bytes32, bytes32, bytes32, bytes32) view returns (address)

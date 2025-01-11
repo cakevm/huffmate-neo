@@ -1,3 +1,5 @@
+#include "../../../src/data-structures/Bytes.huff"
+
 #define macro SET_STOR(offset, value) = takes(2) returns(0) {
     <value> <offset> sstore        // []
 }

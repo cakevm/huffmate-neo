@@ -3,7 +3,8 @@ pragma solidity ^0.8.15;
 
 import "forge-std/Test.sol";
 import "forge-std/console.sol";
-import "foundry-huff/HuffDeployer.sol";
+import {HuffNeoDeployer} from "foundry-huff-neo/HuffNeoDeployer.sol";
+import {HuffNeoConfig} from "foundry-huff-neo/HuffNeoConfig.sol";
 import {NonMatchingSelectorsHelper} from "../test-utils/NonMatchingSelectorHelper.sol";
 
 interface Auth {
@@ -37,20 +38,18 @@ contract AuthTest is Test, NonMatchingSelectorsHelper {
     bytes memory authority = abi.encode(INIT_AUTHORITY);
 
     // Deploy the roles authority
-    string memory wrapper_code = vm.readFile("test/auth/mocks/RolesAuthorityWrappers.huff");
-    HuffConfig config = HuffDeployer.config().with_code(wrapper_code).with_args(bytes.concat(owner, authority));
+    HuffNeoConfig config = HuffNeoDeployer.config().with_args(bytes.concat(owner, authority));
     vm.expectEmit(true, true, true, true);
     emit AuthorityUpdated(address(config), INIT_AUTHORITY);
     emit OwnerUpdated(address(config), OWNER);
-    rolesAuth = RolesAuthority(config.deploy("auth/RolesAuthority"));
+    rolesAuth = RolesAuthority(config.deploy("test/auth/mocks/RolesAuthorityWrappers.huff"));
 
     // Deploy the authority
-    string memory auth_wrapper_code = vm.readFile("test/auth/mocks/AuthWrappers.huff");
-    HuffConfig auth_config = HuffDeployer.config().with_code(auth_wrapper_code).with_args(bytes.concat(owner, authority));
+    HuffNeoConfig auth_config = HuffNeoDeployer.config().with_args(bytes.concat(owner, authority));
     vm.expectEmit(true, true, true, true);
     emit AuthorityUpdated(address(auth_config), INIT_AUTHORITY);
     emit OwnerUpdated(address(auth_config), OWNER);
-    auth = Auth(auth_config.deploy("auth/Auth"));
+    auth = Auth(auth_config.deploy("test/auth/mocks/AuthWrappers.huff"));
   }
 
   /// @notice Test that a non-matching signature reverts
@@ -128,9 +127,8 @@ contract AuthTest is Test, NonMatchingSelectorsHelper {
 
   function testAuthoritiesCanSetAuthority() public {
     // Create Roles Auth for authority
-    string memory wrapper_code = vm.readFile("test/auth/mocks/RolesAuthorityWrappers.huff");
-    HuffConfig config = HuffDeployer.config().with_code(wrapper_code).with_args(bytes.concat(abi.encode(OWNER), abi.encode(OWNER)));
-    rolesAuth = RolesAuthority(config.deploy("auth/RolesAuthority"));
+    HuffNeoConfig config = HuffNeoDeployer.config().with_args(bytes.concat(abi.encode(OWNER), abi.encode(OWNER)));
+    rolesAuth = RolesAuthority(config.deploy("test/auth/mocks/RolesAuthorityWrappers.huff"));
 
     // Set roles auth as the authority
     vm.prank(OWNER);

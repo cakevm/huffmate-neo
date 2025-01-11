@@ -1,3 +1,4 @@
+#include "../../../src/utils/Refunded.huff"
 
 #define function refundedCall() payable returns ()
 #define function nonRefundedCall() payable returns ()

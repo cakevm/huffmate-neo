@@ -1,3 +1,5 @@
+#include "../../../src/utils/MerkleProofLib.huff"
+
 #define function verifyProof(bytes32, bytes32, bytes32[] calldata) pure returns (bool)
 
 #define macro VERIFY_PROOF_WRAPPER() = takes (0) returns (0) {

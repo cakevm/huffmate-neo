@@ -1,3 +1,4 @@
+#include "../../../src/tokens/ERC721.huff"
 
 #define function mint(address, uint256) payable returns ()
 #define function burn(uint256) nonpayable returns ()

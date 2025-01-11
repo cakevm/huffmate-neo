@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.15;
 
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 import "forge-std/Test.sol";
 
 import { WETH } from "solmate/tokens/WETH.sol";
@@ -17,8 +17,7 @@ contract CREATE3Test is Test {
     CREATE3 create3;
 
     function setUp() public {
-        string memory wrapper_code = vm.readFile("test/utils/mocks/Create3Wrappers.huff");
-        create3 = CREATE3(HuffDeployer.deploy_with_code("utils/CREATE3", wrapper_code));
+        create3 = CREATE3(HuffNeoDeployer.deploy("test/utils/mocks/Create3Wrappers.huff"));
     }
 
     function testCreate3ERC20() public {

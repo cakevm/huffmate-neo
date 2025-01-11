@@ -2,8 +2,8 @@
 pragma solidity ^0.8.15;
 
 import "forge-std/Test.sol";
-import { HuffDeployer } from "foundry-huff/HuffDeployer.sol";
-import { HuffConfig } from "foundry-huff/HuffConfig.sol";
+import { HuffNeoDeployer } from "foundry-huff-neo/HuffNeoDeployer.sol";
+import { HuffNeoConfig } from "foundry-huff-neo/HuffNeoConfig.sol";
 import {NonMatchingSelectorsHelper} from "../test-utils/NonMatchingSelectorHelper.sol";
 
 
@@ -30,17 +30,14 @@ contract RolesAuthorityTest is Test, NonMatchingSelectorsHelper {
     bytes memory owner = abi.encode(OWNER);
     bytes memory authority = abi.encode(INIT_AUTHORITY);
 
-    // Grab wrapper code
-    string memory wrapper_code = vm.readFile("test/auth/mocks/RolesAuthorityWrappers.huff");
-
     // Create the config deployer
-    HuffConfig config = HuffDeployer.config().with_code(wrapper_code).with_args(bytes.concat(owner, authority));
+    HuffNeoConfig config = HuffNeoDeployer.config().with_args(bytes.concat(owner, authority));
 
     // Deploy and expect events
     vm.expectEmit(true, true, true, true);
     emit AuthorityUpdated(address(config), INIT_AUTHORITY);
     emit OwnerUpdated(address(config), OWNER);
-    roleAuth = RolesAuthority(config.deploy("auth/RolesAuthority"));
+    roleAuth = RolesAuthority(config.deploy("test/auth/mocks/RolesAuthorityWrappers.huff"));
   }
 
   /// @notice Test that a non-matching selector reverts

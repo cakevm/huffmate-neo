@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.15;
 
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 import "forge-std/Test.sol";
 
 interface IFixedPointMath {
@@ -26,8 +26,7 @@ contract FixedPointMathTest is Test {
     function setUp() public {
         /// @notice deploy a new instance of IFixedPointMath by
         /// passing in the address of the deployed Huff contract
-        string memory wrapper_code = vm.readFile("test/math/mocks/FixedPointMathWrappers.huff");
-        math = IFixedPointMath(HuffDeployer.deploy_with_code("math/FixedPointMath", wrapper_code));
+        math = IFixedPointMath(HuffNeoDeployer.deploy("test/math/mocks/FixedPointMathWrappers.huff"));
     }
 
     function testExpWad() public {

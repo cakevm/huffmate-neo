@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.15;
 
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 import "forge-std/Test.sol";
 
 import "forge-std/console.sol";
@@ -47,24 +47,20 @@ contract ERC20Test is Test {
     uint256 public constant DECIMALS = uint(0x12);
 
     function setUp() public {
-        // Read our wrappers
-        string memory mintable_wrapper = vm.readFile("test/tokens/mocks/ERC20MintableWrappers.huff");
-        string memory mock_wrapper = vm.readFile("test/tokens/mocks/ERC20Wrappers.huff");
-
         // Deploy the Mintable ERC20
-        address mintableTokenAddress = HuffDeployer.config()
-            .with_code(mintable_wrapper)
+        bytes memory args = bytes.concat(abi.encode("Token"), abi.encode("TKN"), abi.encode(DECIMALS));
+
+        address mintableTokenAddress = HuffNeoDeployer.config()
             .with_deployer(deployer)
-            .with_args(bytes.concat(abi.encode("Token"), abi.encode("TKN"), abi.encode(DECIMALS)))
-            .deploy("tokens/ERC20");
+            .with_args(args)
+            .deploy("test/tokens/mocks/ERC20MintableWrappers.huff");
         token = IMintableERC20(mintableTokenAddress);
 
         // Deploy the Mock ERC20
-        address mockTokenAddress = HuffDeployer.config()
-            .with_code(mock_wrapper)
+        address mockTokenAddress = HuffNeoDeployer.config()
             .with_deployer(deployer)
-            .with_args(bytes.concat(abi.encode("Token"), abi.encode("TKN"), abi.encode(DECIMALS)))
-            .deploy("tokens/ERC20");
+            .with_args(args)
+            .deploy("test/tokens/mocks/ERC20Wrappers.huff");
         mockToken = IERC20(mockTokenAddress);
     }
 
@@ -592,7 +588,7 @@ contract ERC20Test is Test {
 
     // function testSetPendingOwner() public {
     //     // assertEq(token.pendingOwner(), address(0x0));
-    //     address owner = token.owner(); // TODO: Update when bug is fixed with HuffDeployer address
+    //     address owner = token.owner(); // TODO: Update when bug is fixed with HuffNeoDeployer address
     //     address newOwner = address(0xBADBABE);
 
     //     vm.expectEmit(true, true, false, false);
@@ -605,7 +601,7 @@ contract ERC20Test is Test {
     // }
 
     // function testAcceptOwnership() public {
-    //     address owner = token.owner(); // TODO: Update when bug is fixed with HuffDeployer address
+    //     address owner = token.owner(); // TODO: Update when bug is fixed with HuffNeoDeployer address
     //     address newOwner = address(0xBADBABE);
 
     //     vm.prank(owner);

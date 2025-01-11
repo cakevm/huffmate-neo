@@ -2,7 +2,7 @@
 pragma solidity ^0.8.15;
 
 import "forge-std/Test.sol";
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 
 interface SafeMath {
     function safeAdd(uint256,uint256) external pure returns (uint256);
@@ -16,8 +16,7 @@ contract SafeMathTest is Test {
     SafeMath safeMath;
 
     function setUp() public {
-        string memory wrappers = vm.readFile("test/math/mocks/SafeMathWrappers.huff");
-        safeMath = SafeMath(HuffDeployer.deploy_with_code("math/SafeMath", wrappers));
+        safeMath = SafeMath(HuffNeoDeployer.deploy("test/math/mocks/SafeMathWrappers.huff"));
     }
 
     function testSafeAdd() public {

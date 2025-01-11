@@ -1,3 +1,5 @@
+#include "../../../src/proxies/ERC1967Proxy.huff"
+
 // Functions
 // Implementation
 #define function implementation() nonpayable returns (address)

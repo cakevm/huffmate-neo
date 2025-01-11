@@ -2,7 +2,7 @@
 pragma solidity ^0.8.15;
 
 import "forge-std/Test.sol";
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 
 interface ICalls {
     function callFunc() external;
@@ -14,8 +14,7 @@ contract CallsTest is Test {
     ICalls calls;
 
     function setUp() public {
-        string memory wrapper_code = vm.readFile("test/utils/mocks/CallWrappers.huff");
-        calls = ICalls(HuffDeployer.deploy_with_code("utils/Calls", wrapper_code));
+        calls = ICalls(HuffNeoDeployer.deploy("test/utils/mocks/CallWrappers.huff"));
     }
 
     function testCall() public {

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.15;
 
-import "foundry-huff/HuffDeployer.sol";
+import "foundry-huff-neo/HuffNeoDeployer.sol";
 import "forge-std/Test.sol";
 import "forge-std/console2.sol";
 
@@ -17,14 +17,9 @@ contract ArraysTest is Test {
     uint256[] array = [1, 2, 3, 4, 5];
 
     function setUp() public {
-        // Read instantiable arrays from file
-        string memory instantiable_code = vm.readFile(
-            "test/data-structures/mocks/ArrayWrappers.huff"
-        );
-
         // Create an Instantiable Arrays
-        HuffConfig config = HuffDeployer.config().with_code(instantiable_code);
-        arrays = IArrays(config.deploy("data-structures/Arrays"));
+        HuffNeoConfig config = HuffNeoDeployer.config();
+        arrays = IArrays(config.deploy("test/data-structures/mocks/ArrayWrappers.huff"));
 
         arrays.setArrayFromCalldata(array);
     }

@@ -1,3 +1,4 @@
+#include "../../../../src/mechanisms/huff-vrgda/LinearVRGDA.huff"
 
 #define function getTargetSaleTime(int256) view returns (int256)
 #define function getVRGDAPrice(int256, uint256) view returns (uint256)

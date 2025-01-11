@@ -3,22 +3,15 @@ pragma solidity ^0.8.15;
 
 import {Test} from "forge-std/Test.sol";
 
-import {HuffDeployer} from "foundry-huff/HuffDeployer.sol";
-import {HuffConfig} from "foundry-huff/HuffConfig.sol";
+import {HuffNeoDeployer} from "foundry-huff-neo/HuffNeoDeployer.sol";
+import {HuffNeoConfig} from "foundry-huff-neo/HuffNeoConfig.sol";
 
 contract OnlyContractTest is Test {
     address only_contract;
 
     function setUp() public {
-        HuffConfig config = HuffDeployer.config().with_code(string.concat(
-            "#define macro MAIN() = takes(0) returns(0) {\n",
-            "  ONLY_CONTRACT()\n",
-            "  0x00 0x00 log0 // anonymous log\n",
-            "  0x01 0x00 mstore\n",
-            "  0x20 0x00 return\n",
-            "}\n"
-        ));
-        only_contract = config.deploy("auth/OnlyContract");
+        HuffNeoConfig config = HuffNeoDeployer.config();
+        only_contract = config.deploy("test/auth/mocks/OnlyContractWrappers.huff");
     }
 
     /// @notice Tests that ONLY_CONTRACT macro reverts when tx.origin == msg.sender
