@@ -21,7 +21,7 @@ jobs:
       - name: Install Huff Neo
         uses: cakevm/huff-neo-toolchain@v1
         with:
-          version: nightly
+          version: latest
       - name: Run Forge build
         run: forge --version && forge build --sizes
         id: build
@@ -40,7 +40,7 @@ jobs:
       - name: Install Huff Neo
         uses: cakevm/huff-neo-toolchain@v1
         with:
-          version: nightly
+          version: latest
       - name: Run Forge tests
         run: forge test -vvv
         id: test
@@ -59,7 +59,7 @@ jobs:
       - name: Install Huff Neo
         uses: cakevm/huff-neo-toolchain@v1
         with:
-          version: nightly
+          version: latest
 #      - name: Huff Tests
 #        uses: huff-language/huff-tests-action@v3
 #        with:
