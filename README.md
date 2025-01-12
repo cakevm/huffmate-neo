@@ -28,7 +28,7 @@ A set of Huff contracts for education purposes. This repository is a fork of [hu
 forge install cakevm/huffmate-neo
 ```
 
-If you like tweak huff code or fix the tests (remove the flag `--no-match-test`) clone the repository and run the tests with:
+If you like tweak the huff code or fix the tests (remove the flag `--no-match-test`) clone the repository and run the tests with:
 
 ```sh
 forge test --no-match-test "IgnoreFailing_(.*)"
