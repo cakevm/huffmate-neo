@@ -1,8 +1,17 @@
-<img align="right" width="150" height="150" top="100" src="./assets/huff.jpg">
+<div align="center">
 
-# huffmate-neo • [![ci](https://github.com/huff-language/huffmate/actions/workflows/test.yml/badge.svg)](https://github.com/huff-language/huffmate/actions/workflows/test.yml) [![version](https://img.shields.io/badge/version-v1.1-ff69b4)](https://github.com/huff-language/huffmate/releases/tag/v1.1) [![license](https://img.shields.io/badge/License-MIT-orange.svg?label=license)](https://opensource.org/licenses/MIT) ![Discord](https://img.shields.io/discord/980519274600882306?color=blue)
+[![ci](https://github.com/cakevm/huffmate-neo/actions/workflows/test.yml/badge.svg?branch=main)][gh-huffmate-neo] [![Telegram Chat][tg-badge]][tg-url]
 
-A set of **modern**, **opinionated**, and **secure** [Huff](https://github.com/huff-language) contracts.
+
+[gh-huffmate-neo]: https://github.com/cakevm/huffmate-neo/actions/workflows/test.yml
+[tg-badge]: https://img.shields.io/badge/telegram-huff_neo-2CA5E0?style=plastic&logo=telegram
+[tg-url]: https://t.me/huff_neo
+
+</div>
+
+# huffmate-neo
+
+A set of Huff contracts for education purposes. This repository is a fork of [huffmate](https://github.com/huff-language/huffmate). Some test do not work and are disabled with `IgnoreFailing_`. Feel free to open a PR to fix them. The main purpose of this repository to provide a set of contracts to test the [Huff Neo compiler](https://github.com/cakevm/huff-neo).
 
 > **Warning**
 >
@@ -16,7 +25,7 @@ A set of **modern**, **opinionated**, and **secure** [Huff](https://github.com/h
 **Recommended** To install with [**Foundry**](https://github.com/foundry-rs/foundry):
 
 ```sh
-forge install huff-language/huffmate
+forge install cakevm/huffmate-neo
 ```
 
 To install with [**Hardhat**](https://github.com/nomiclabs/hardhat) or [**Truffle**](https://github.com/trufflesuite/truffle):
@@ -86,7 +95,8 @@ utils
 └─ TSOwnable — "An Ownable Implementation using Two-Step Transfer Pattern"
 ```
 
-### Acknowledgements
+## Acknowledgements
+Many thanks to the contributors of the [huffmate](https://github.com/huff-language/huffmate) repository and to the authors who maintained it for such a long period!
 
 These contracts were inspired by or directly modified from many sources, primarily:
 
@@ -105,3 +115,6 @@ These contracts were inspired by or directly modified from many sources, primari
 - [Dappsys V2](https://github.com/dapp-org/dappsys-v2)
 - [0xSequence](https://github.com/0xSequence)
 - [OpenZeppelin](https://github.com/OpenZeppelin/openzeppelin-contracts)
+
+## License
+This project is licensed under the [MIT License](./LICENSE).

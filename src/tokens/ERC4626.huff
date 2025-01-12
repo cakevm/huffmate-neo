@@ -35,6 +35,7 @@
 #define function maxRedeem(address owner) view returns (uint256)
 
 // Immutables offsets
+#define constant DECIMALS_OFFSET = 0x0000000000000000000000000000000000000000000000000000000000000020
 #define constant ASSET_OFFSET = 0x0000000000000000000000000000000000000000000000000000000000000100
 
 #define constant TYPE_UINT_256_MAX = 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
