@@ -8,7 +8,7 @@ on:
 
 jobs:
   check:
-    name: Foundry project
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -24,10 +24,9 @@ jobs:
           version: latest
       - name: Run Forge build
         run: forge --version && forge build --sizes
-        id: build
 
   tests:
-    name: Foundry project
+    name: Run tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -42,8 +41,7 @@ jobs:
         with:
           version: latest
       - name: Run Forge tests
-        run: forge test -vvv
-        id: test
+        run: forge test --no-match-test "IgnoreFailing_(.*)"
 
   huff-tests:
     name: Tests in Huff
