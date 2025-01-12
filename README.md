@@ -11,7 +11,7 @@
 
 # huffmate-neo
 
-A set of Huff contracts for education purposes. This repository is a fork of [huffmate](https://github.com/huff-language/huffmate). Some test do not work and are disabled with `IgnoreFailing_`. Feel free to open a PR to fix them. The main purpose of this repository to provide a set of contracts to test the [Huff Neo compiler](https://github.com/cakevm/huff-neo).
+A set of Huff contracts for education purposes. This repository is a fork of [huffmate](https://github.com/huff-language/huffmate). Some test do not work and are disabled with `IgnoreFailing_`. Feel free to open a PR to fix them. The main purpose of this repository to provide a set of contracts to test the [Huff Neo Compiler](https://github.com/cakevm/huff-neo).
 
 > **Warning**
 >
@@ -26,12 +26,6 @@ A set of Huff contracts for education purposes. This repository is a fork of [hu
 
 ```sh
 forge install cakevm/huffmate-neo
-```
-
-To install with [**Hardhat**](https://github.com/nomiclabs/hardhat) or [**Truffle**](https://github.com/trufflesuite/truffle):
-
-```sh
-npm install @pentagonxyz/huffmate
 ```
 
 ### Contracts
