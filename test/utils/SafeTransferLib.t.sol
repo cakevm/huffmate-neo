@@ -181,7 +181,7 @@ contract SafeTransferLibTest is Test {
         verifySafeApprove(address(returnsTooLittle), address(0xBEEF), 1e18);
     }
 
-    function IgnoreFailing_testFuzzTransferWithMissingReturn(
+    function testFuzzTransferWithMissingReturn(
         address to,
         uint256 amount,
         bytes calldata brutalizeWith
@@ -218,7 +218,7 @@ contract SafeTransferLibTest is Test {
         verifySafeTransfer(address(returnsGarbage), to, amount);
     }
 
-    function IgnoreFailing_testFuzzTransferWithNonContract(
+    function testFuzzTransferWithNonContract(
         address nonContract,
         address to,
         uint256 amount,
@@ -275,7 +275,7 @@ contract SafeTransferLibTest is Test {
         verifySafeTransferFrom(address(returnsGarbage), from, to, amount);
     }
 
-    function IgnoreFailing_testFuzzTransferFromWithNonContract(
+    function testFuzzTransferFromWithNonContract(
         address nonContract,
         address from,
         address to,
@@ -296,7 +296,7 @@ contract SafeTransferLibTest is Test {
         verifySafeApprove(address(missingReturn), to, amount);
     }
 
-    function IgnoreFailing_testFuzzApproveWithStandardERC20(
+    function testFuzzApproveWithStandardERC20(
         address to,
         uint256 amount,
         bytes calldata brutalizeWith
@@ -325,7 +325,7 @@ contract SafeTransferLibTest is Test {
         verifySafeApprove(address(returnsGarbage), to, amount);
     }
 
-    function IgnoreFailing_testFuzzApproveWithNonContract(
+    function testFuzzApproveWithNonContract(
         address nonContract,
         address to,
         uint256 amount,
@@ -337,7 +337,7 @@ contract SafeTransferLibTest is Test {
         SafeTransferLib.safeApprove(nonContract, to, amount);
     }
 
-    function IgnoreFailing_testFuzzTransferETH(
+    function testFuzzTransferETH(
         address recipient,
         uint256 amount,
         bytes calldata brutalizeWith

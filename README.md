@@ -11,7 +11,7 @@
 
 # huffmate-neo
 
-A set of Huff contracts for education purposes. This repository is a fork of [huffmate](https://github.com/huff-language/huffmate). Some test do not work and are disabled with `IgnoreFailing_`. Feel free to open a PR to fix them. The main purpose of this repository to provide a set of contracts to test the [Huff Neo Compiler](https://github.com/cakevm/huff-neo).
+A set of Huff contracts for education purposes. This repository is a hard-fork of [huffmate](https://github.com/huff-language/huffmate). The main purpose of this repository to provide a set of contracts to test the [Huff Neo Compiler](https://github.com/cakevm/huff-neo).
 
 > **Warning**
 >
@@ -31,7 +31,7 @@ forge install cakevm/huffmate-neo
 If you like tweak the huff code or fix the tests (remove the flag `--no-match-test`) clone the repository and run the tests with:
 
 ```sh
-forge test --no-match-test "IgnoreFailing_(.*)"
+forge test --show-progress
 ````
 
 ### Contracts

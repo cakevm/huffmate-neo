@@ -22,28 +22,28 @@ contract JumpTableUtilTest is Test {
         jtUtil = IJumpTableUtil(HuffNeoDeployer.deploy("test/utils/mocks/JumpTableUtilWrappers.huff"));
     }
 
-    function IgnoreFailing_testGetJumpdestFromJT_Mem() public {
+    function testGetJumpdestFromJT_Mem() public {
         for (uint i; i < 4; i++) {
             uint jumpdest = jtUtil.getJumpdestMem(i);
             assertEq(jumpdest, FIRST_LABEL_PC + i);
         }
     }
 
-    function IgnoreFailing_testGetJumpdestFromJT_Stack() public {
+    function testGetJumpdestFromJT_Stack() public {
         for (uint i; i < 4; i++) {
             uint jumpdest = jtUtil.getJumpdestStack(i);
             assertEq(jumpdest, FIRST_LABEL_PC + i);
         }
     }
 
-    function IgnoreFailing_testGetJumpdestFromPackedJT_Mem() public {
+    function testGetJumpdestFromPackedJT_Mem() public {
         for (uint i; i < 4; i++) {
             uint jumpdest = jtUtil.getJumpdestMemPacked(i);
             assertEq(jumpdest, FIRST_LABEL_PC + i);
         }
     }
 
-    function IgnoreFailing_testGetJumpdestFromPackedJT_Stack() public {
+    function testGetJumpdestFromPackedJT_Stack() public {
         for (uint i; i < 4; i++) {
             uint jumpdest = jtUtil.getJumpdestStackPacked(i);
             assertEq(jumpdest, FIRST_LABEL_PC + i);

@@ -103,7 +103,7 @@ contract SSTORE2Test is Test {
     }
 
     /// @notice End can never be less than start
-    function IgnoreFailing_testReadBetweenOutOfBounds(uint256 start, uint256 end, bytes memory input) public {
+    function testReadBetweenOutOfBounds(uint256 start, uint256 end, bytes memory input) public {
         // Make sure the end is always less than the start
         if (end > start) (start, end) = (end, start);
         vm.assume(end != type(uint256).max);
