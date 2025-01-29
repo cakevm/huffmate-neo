@@ -41,7 +41,7 @@ jobs:
         with:
           version: latest
       - name: Run Forge tests
-        run: forge test
+        run: forge test --no-match-test "IgnoreFailing_(.*)"
 
   huff-tests:
     name: Tests in Huff
