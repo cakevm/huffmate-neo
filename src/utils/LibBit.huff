@@ -161,7 +161,7 @@
 }
 
 
-#define test FLS() = {
+#define test FLS_TEST() = {
     0xFF 0x03 shl
     FLS()
 
@@ -171,7 +171,7 @@
     succeed:
 }
 
-#define test FFS() = {
+#define test FFS_TEST() = {
     0xFF 0x03 shl
     FFS()
 
@@ -181,7 +181,7 @@
     succeed:
 }
 
-#define test POP_COUNT() = {
+#define test POP_COUNT_TEST() = {
     0x01 dup1
     0xFF shl or
     POP_COUNT()
@@ -192,7 +192,7 @@
     succeed:
 }
 
-#define test IS_POW_OF_2() = {
+#define test IS_POW_OF_2_TEST() = {
     0x05 dup1
     IS_POW_OF_2()
 

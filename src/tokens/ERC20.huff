@@ -228,6 +228,7 @@
     [BALANCE_SLOT] STORE_ELEMENT_FROM_KEYS(0x00)        // [value, from, to]
 }
 
+/* DISABLE DUPLICATE APPROVE
 /// @notice Approve
 /// @notice Approves an address to spend an amount of tokens on the caller's behalf
 #define macro APPROVE() = takes (0) returns (0) {
@@ -245,6 +246,7 @@
     // Store the value at slot = keccak256(from . to)
     STORE_ELEMENT_FROM_KEYS(0x00)
 }
+*/
 
 /// @notice Domain Separator
 /// @notice Returns the EIP-712 domain separator
