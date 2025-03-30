@@ -205,7 +205,7 @@
 
     // Increase the balance of the to account
     // takes: [to, tokenId, amount]
-    INCREASE_BALANCE(0x00)
+    INCREASE_BALANCE()
 
     // emit transfer event
     0x04 calldataload dup1          // [to]

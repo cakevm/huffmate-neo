@@ -18,13 +18,13 @@
     CONCAT_MEMORY()             // [pos]
         
     dup1 mload                  // [len, pos]
-    0x00 SET_STOR()             // [pos]
+    0x00 sstore                 // [pos]
         
     dup1 0x20 add mload         // [babe1, pos]
-    0x20 SET_STOR()             // [pos]
+    0x20 sstore                 // [pos]
         
     0x40 add mload              // [babe2, pos]
-    0x40 SET_STOR()             // [pos]
+    0x40 sstore                 // [pos]
     
     stop
 }
@@ -43,16 +43,16 @@
     CONCAT_MEMORY()    
         
     dup1 mload          
-    0x00 SET_STOR()      
+    0x00 sstore      
         
     dup1 0x20 add mload   
-    0x20 SET_STOR()        
+    0x20 sstore        
         
     dup1 0x40 add mload     
-    0x40 SET_STOR()          
+    0x40 sstore          
         
     0x60 add mload            
-    0x60 SET_STOR()            
+    0x60 sstore           
     
     stop
 }
@@ -69,10 +69,10 @@
     CONCAT_MEMORY()    
         
     dup1 mload        
-    0x00 SET_STOR()  
+    0x00 sstore  
         
     dup1 0x20 add mload          
-    0x20 SET_STOR()             
+    0x20 sstore             
     
     stop
 }
@@ -90,13 +90,13 @@
     CONCAT_MEMORY()    
         
     dup1 mload           
-    0x00 SET_STOR()       
+    0x00 sstore       
         
     dup1 0x20 add mload    
-    0x20 SET_STOR()         
+    0x20 sstore         
     
     dup1 0x40 add mload      
-    0x40 SET_STOR()           
+    0x40 sstore           
     
     stop
 }
@@ -114,10 +114,10 @@
     CONCAT_MEMORY()
         
     dup1 mload    
-    0x00 SET_STOR()              
+    0x00 sstore              
         
     dup1 0x20 add mload         
-    0x20 SET_STOR()            
+    0x20 sstore            
     
     stop
 }
@@ -136,10 +136,10 @@
     CONCAT_MEMORY()               // [pos]
         
     dup1 mload                    // [len, pos]
-    0x00 SET_STOR()               // [pos]
+    0x00 sstore               // [pos]
         
     dup1 0x20 add mload           // [babe1, pos]
-    0x20 SET_STOR()               // [pos]
+    0x20 sstore               // [pos]
     
     stop
 }
@@ -154,10 +154,10 @@
     SLICE_MEMORY()                // [slice_ptr]
         
     dup1 mload
-    0x00 SET_STOR()
+    0x00 sstore
         
     dup1 0x20 add mload
-    0x20 SET_STOR()
+    0x20 sstore
     
     stop
 }
@@ -173,13 +173,13 @@
     SLICE_MEMORY()
         
     dup1 mload
-    0x00 SET_STOR()
+    0x00 sstore
         
     dup1 0x20 add mload
-    0x20 SET_STOR()
+    0x20 sstore
     
     dup1 0x40 add mload
-    0x40 SET_STOR()
+    0x40 sstore
     
     stop
 }
@@ -195,10 +195,10 @@
     SLICE_MEMORY()
 
     dup1 mload
-    0x00 SET_STOR()
+    0x00 sstore
 
     dup1 0x20 add mload
-    0x20 SET_STOR()
+    0x20 sstore
 
     stop
 }

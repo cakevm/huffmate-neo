@@ -17,7 +17,7 @@
 /// @param {stack} sold A number of tokens sold, scaled by 1e18, to get the corresponding target sale time for.
 /// @return The target time the tokens should be sold by, scaled by 1e18, where the time is
 /// relative, such that 0 means the tokens should be sold immediately when the VRGDA begins.
-#define macro GET_TARGET_SALE_TIME() = takes (1) returns (0) {
+#define macro GET_TARGET_SALE_TIME(_fail) = takes (1) returns (0) {
     // init state = [sold]
     [PER_TIME_UNIT]             // [perTimeUnit, sold]
     swap1                       // [sold, perTimeUnit]
