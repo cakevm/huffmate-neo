@@ -565,6 +565,9 @@
         // takes: [to, from, dyn(ids)]
         SAFE_BATCH()
         // execution completes within SAFE_BATCH
+    
+    error:
+        LENGTH_MISMATCH(0x00)
 }
 
 /// @title Balance Of Batch

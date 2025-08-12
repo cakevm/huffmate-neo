@@ -102,7 +102,7 @@
         0x00 create     // [instance, extra_len, data_len, impl_addr, run_size]
 
         // Revert if deployment failed
-        dup1 iszero err jumpi
+        dup1 iszero <err> jumpi
 
         // Clean stack:
         swap4           // [run_size, extra_len, data_len, impl_addr, instance]
